@@ -1,61 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitheesh's Colorful Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background:skyblue;
-            color:sky blue;
-        }
-        header {
-            padding: 50px;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        .bio {
-            padding: 20px;
-            font-size: 1.2em;
-        }
-        .social-links a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background: #ff4081;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .social-links a:hover {
-            background: #e60073;
-        }
-        .social-links a:visited {
-            color: #ffd700;
-        }
-        .contact {
-            padding: 20px;
-            font-size: 1.2em;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitheesh Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #020024;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ===== STAR BACKGROUND ===== */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  background-repeat: repeat;
+  z-index: -1;
+}
+.stars {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 100px 150px, white, transparent);
+  animation: moveStars 60s linear infinite;
+}
+.stars2 {
+  background-image:
+    radial-gradient(1px 1px at 50px 60px, white, transparent),
+    radial-gradient(2px 2px at 180px 200px, white, transparent);
+  animation: moveStars 120s linear infinite;
+}
+.stars3 {
+  background-image:
+    radial-gradient(1px 1px at 150px 100px, white, transparent),
+    radial-gradient(2px 2px at 300px 250px, white, transparent);
+  animation: moveStars 180s linear infinite;
+}
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* ===== TOP CONTACT ===== */
+.top-contact {
+  padding: 1.5rem 1.5rem;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+.contact-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1.4rem;
+  box-shadow: 0 0 20px rgba(0,234,255,0.18);
+  transition: transform .3s;
+}
+.contact-card:hover { transform: translateY(-6px); }
+.contact-card h3 { color: #00eaff; margin-bottom: .4rem; }
+.contact-card a { color: white; text-decoration: none; }
+
+/* ===== NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.75);
+  padding: .6rem;
+  z-index: 100;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+nav a { color: white; text-decoration: none; }
+nav a:hover { color: #00eaff; }
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 2rem 1.5rem;
+  max-width: 1100px;
+  margin: auto;
+}
+h2 {
+  text-align: center;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero h1 { font-size: 2.8rem; }
+.hero p { margin-top: .4rem; color: #cccccc; }
+.hero a {
+  margin-top: 1.2rem;
+  padding: .8rem 1.8rem;
+  background: #00eaff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* ===== ABOUT ===== */
+.about p {
+  font-size: 1.05rem;
+  text-align: center;
+  color: #dddddd;
+}
+
+/* ===== EDUCATION ===== */
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.edu-card {
+  background: rgba(255,255,255,0.08);
+  padding: 1.2rem;
+  border-radius: 12px;
+}
+.edu-card h3 { color: #00eaff; }
+
+/* ===== SKILLS ===== */
+.skills-container {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+.skill {
+  padding: .8rem 1.6rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ===== PROJECTS ===== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: rgba(255,255,255,0.08);
+  padding: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #bbbbbb;
+}
+</style>
 </head>
+
 <body>
-    <header>Welcome to Nitheesh's Page!</header>
-    <section class="bio">
-        <p>Hi! I'm Nitheesh, First of all I this you to visit my webpage.My new updates will be posted by this wepage.</p>
-    </section>
-    <section class="social-links">
-        <a href="https://www.facebook.com/profile.php?id=61565283860590" target="_blank">Facebook</a>
-        <a href="https://twitter.com" target="_blank">Twitter</a>
-        <a href="https://www.instagram.com/kannan_kulam_official?igsh=MXZ0aGN5OGkyb2FkMw==" target="_blank">Instagram</a>
-    </section>
-    <p style="font-size:16px; color:darkred;">Contact me at:</p>
-<a href="mailto:nitheeshyuvaraj0@gmail.com" style="color:darkblue; text-decoration:none;">nitheeshyuvaraj0@gmail.com ,<a href="tel:9344828072" style="color:darkblue; text-decoration:none;">MOB:9344828072</a>
-</a></p>
-</p>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<div class="top-contact">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Email</h3>
+      <a href="mailto:nitheeshyuvaraj0@gmail.com">nitheeshyuvaraj0@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <h3>Phone</h3>
+      <a href="tel:9344828072">+91 93448 28072</a>
+    </div>
+    <div class="contact-card">
+      <h3>LinkedIn</h3>
+      <a href="https://www.linkedin.com/in/nitheesh-msc/" target="_blank">linkedin.com/in/nitheesh-msc</a>
+    </div>
+    <div class="contact-card">
+      <h3>GitHub</h3>
+      <a href="https://github.com/Nitheesh2007" target="_blank">github.com/Nitheesh2007</a>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<section id="hero" class="hero">
+  <h1>Hello, I'm Nitheesh</h1>
+  <p>M.Sc Software Systems Student | Web Developer | AI Enthusiast</p>
+  <a href="#projects">View My Work</a>
+</section>
+
+<section id="about" class="about">
+  <h2>About Me</h2>
+  <p>I am a passionate and self-driven software student interested in web development, AI and real-world problem solving.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="education-container">
+    <div class="edu-card">
+      <h3>M.Sc Software Systems</h3>
+      <p>Kongu Engineering College</p>
+      <p><strong>2024 – 2029</strong></p>
+    </div>
+    <div class="edu-card">
+      <h3>HSLC</h3>
+      <p>Thamarai Matric HSS</p>
+      <p><strong>2024</strong></p>
+    </div>
+    <div class="edu-card">
+      <h3>SSLC</h3>
+      <p>Kongu Matric HSS</p>
+      <p><strong>2022</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">C</div>
+    <div class="skill">Poster Design</div>
+    <div class="skill">Video Editing</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      AI-Based Violence Detection in CCTV
+      <img src="cctv.webp" style="width:100%;border-radius:8px;">
+    </div>
+    <div class="project-card">
+      Smart Resume Screening System
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Nitheesh | Portfolio
+</footer>
+
 </body>
 </html>
+
